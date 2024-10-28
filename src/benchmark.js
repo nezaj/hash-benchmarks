@@ -2,7 +2,6 @@ import objectHash from 'object-hash';
 import murmurHash from './murmur-hash.js';
 import sparkHash from './spark-hash.js';
 import fastHash from './fast-hash.js';
-import claudeMurmur from './claude-murmur.js';
 
 const TEST_ITERATIONS = 10000;
 
@@ -77,7 +76,6 @@ function runBenchmark() {
       'fastHash': fastHash,
       'murmurHash': murmurHash,
       'sparkHash': sparkHash,
-      'claudeMurmur': claudeMurmur
     };
 
     const results = {};
@@ -118,7 +116,6 @@ function runBenchmark() {
     'murmurHash': new Set(),
     'sparkHash': new Set(),
     'object-hash': new Set(),
-    'claudeMurmur': new Set()
   };
 
   for (let i = 0; i < 1000; i++) {
@@ -130,7 +127,6 @@ function runBenchmark() {
     hashSets['murmurHash'].add(murmurHash(obj));
     hashSets['sparkHash'].add(sparkHash(obj));
     hashSets['object-hash'].add(objectHash.MD5(obj));
-    hashSets['claudeMurmur'].add(claudeMurmur(obj));
   }
 
   Object.entries(hashSets).forEach(([name, set]) => {
